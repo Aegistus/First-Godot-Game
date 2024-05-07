@@ -45,4 +45,8 @@ func process_state_physics(delta):
 func get_next_state():
 	if player.is_on_floor():
 		return StateType.IDLE
+	if Input.is_action_just_pressed("Dash"):
+		return StateType.DASHING
+	if Input.is_action_just_pressed("Jump"):
+		return StateType.DOUBLEJUMPING
 	return null

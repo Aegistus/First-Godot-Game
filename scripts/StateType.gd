@@ -1,5 +1,5 @@
 class_name StateType
-enum { IDLE, WALKING, JUMPING, DASHING, FALLING }
+enum { IDLE, WALKING, JUMPING, DASHING, FALLING, DOUBLEJUMPING }
 
 static func get_state_name(stateType):
 	match stateType:
@@ -8,4 +8,5 @@ static func get_state_name(stateType):
 		JUMPING: return "JUMPING"
 		DASHING: return "DASHING"
 		FALLING: return "FALLING"
+		DOUBLEJUMPING: return "DOUBLE JUMPING"
 		_: return "UNKNOWN STATE"

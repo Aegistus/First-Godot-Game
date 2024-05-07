@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://oiq05osdhq6y"]
+[gd_scene load_steps=41 format=3 uid="uid://oiq05osdhq6y"]
 
 [ext_resource type="Texture2D" uid="uid://bnob6wauwxya2" path="res://assets/sprites/knight.png" id="1_foh1v"]
 [ext_resource type="AudioStream" uid="uid://bed76qyw4saxv" path="res://assets/sounds/jump.wav" id="3_aaotk"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://scripts/WalkState.gd" id="5_upu21"]
 [ext_resource type="Script" path="res://scripts/FallState.gd" id="6_7ym6d"]
 [ext_resource type="Script" path="res://scripts/JumpState.gd" id="7_8n5h8"]
+[ext_resource type="Script" path="res://scripts/DashState.gd" id="8_4tq28"]
+[ext_resource type="Script" path="res://scripts/DoubleJumpState.gd" id="9_0gfg6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yvlew"]
 atlas = ExtResource("1_foh1v")
@@ -153,7 +155,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"dash",
-"speed": 15.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -246,7 +248,7 @@ position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_ew3sg")
 animation = &"dash"
 autoplay = "idle"
-frame_progress = 0.724794
+frame_progress = 0.0924579
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
@@ -254,9 +256,10 @@ shape = SubResource("CircleShape2D_4arx6")
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_aaotk")
+bus = &"SFX"
 
 [node name="DashTimer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.5
 one_shot = true
 
 [node name="CoyoteTime" type="Timer" parent="."]
@@ -277,3 +280,9 @@ script = ExtResource("6_7ym6d")
 
 [node name="JumpState" type="Node" parent="StateMachine"]
 script = ExtResource("7_8n5h8")
+
+[node name="DashState" type="Node" parent="StateMachine"]
+script = ExtResource("8_4tq28")
+
+[node name="DoubleJumpState" type="Node" parent="StateMachine"]
+script = ExtResource("9_0gfg6")
