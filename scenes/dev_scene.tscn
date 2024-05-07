@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://diiek34tnj2q0" path="res://scenes/platform.tscn" id="6_b6omf"]
 [ext_resource type="PackedScene" uid="uid://c0kk1mb1vsvmx" path="res://scenes/green_slime_enemy.tscn" id="7_ye142"]
 [ext_resource type="FontFile" uid="uid://ify4irhw83gv" path="res://assets/fonts/PixelOperator8.ttf" id="8_kdpkv"]
-[ext_resource type="PackedScene" uid="uid://bnlfwbqiiei4r" path="res://scenes/control.tscn" id="9_b0dy6"]
+[ext_resource type="PackedScene" uid="uid://bnlfwbqiiei4r" path="res://scenes/ui.tscn" id="9_b0dy6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_to10m"]
 texture = ExtResource("3_m5vkt")

@@ -1,17 +1,20 @@
 extends CharacterBody2D
 
 const SPEED = 130.0
-const DASH_SPEED = SPEED * 1.5
+const DASH_SPEED = SPEED * 2.0
 const JUMP_VELOCITY = -300.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var dashDirection
+var canDash = true
+var doubleJump = true
+var hasCoyoteTime = false
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var jumpSound = $JumpSound
 @onready var dash_timer = $DashTimer
-@onready var dash_cooldown = $DashCooldown
+@onready var coyote_time = $CoyoteTime
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -19,10 +22,23 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		jumpSound.play()
+	if Input.is_action_just_pressed("Jump"):
+		if is_on_floor() or not coyote_time.is_stopped():
+			jump()
+		elif coyote_time.is_stopped() and doubleJump:
+			jump()
+			doubleJump = false
 
+	# Check for double jump reset
+	if is_on_floor():
+		doubleJump = true
+		canDash = true
+		hasCoyoteTime = true
+	
+	if not is_on_floor() and coyote_time.is_stopped() and not hasCoyoteTime:
+		coyote_time.start()
+		hasCoyoteTime = true
+		
 	# Get the input direction
 	var direction = Input.get_axis("Move Left", "Move Right")
 	
@@ -42,10 +58,10 @@ func _physics_process(delta):
 		animated_sprite.play("jump")
 
 	# Check for dash input
-	if Input.is_action_just_pressed("Dash") and dash_cooldown.is_stopped():
+	if canDash and not is_on_floor() and Input.is_action_just_pressed("Dash"):
 		dash_timer.start()
-		dash_cooldown.start()
 		dashDirection = direction
+		canDash = false
 		print("Dash start")
 	
 	# Handle movement/deceleration
@@ -59,3 +75,7 @@ func _physics_process(delta):
 		velocity.x += dashDirection * DASH_SPEED
 	
 	move_and_slide()
+
+func jump():
+	velocity.y = JUMP_VELOCITY
+	jumpSound.play()

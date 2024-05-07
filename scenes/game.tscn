@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://co65ag0066fu5" path="res://scenes/killzone.tscn" id="5_4y6w5"]
 [ext_resource type="PackedScene" uid="uid://c0kk1mb1vsvmx" path="res://scenes/green_slime_enemy.tscn" id="6_a3bsd"]
 [ext_resource type="FontFile" uid="uid://ify4irhw83gv" path="res://assets/fonts/PixelOperator8.ttf" id="7_3lrq3"]
-[ext_resource type="PackedScene" uid="uid://bnlfwbqiiei4r" path="res://scenes/control.tscn" id="9_n44fi"]
+[ext_resource type="PackedScene" uid="uid://bnlfwbqiiei4r" path="res://scenes/ui.tscn" id="9_n44fi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_to10m"]
 texture = ExtResource("2_63bsy")
@@ -535,4 +535,4 @@ theme_override_font_sizes/font_size = 8
 text = "How about you Imagine Dragon deez nuts across your face?"
 autowrap_mode = 2
 
-[node name="Control" parent="." instance=ExtResource("9_n44fi")]
+[node name="UI" parent="." instance=ExtResource("9_n44fi")]

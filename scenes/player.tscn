@@ -191,9 +191,9 @@ shape = SubResource("CircleShape2D_4arx6")
 stream = ExtResource("3_aaotk")
 
 [node name="DashTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.25
 one_shot = true
 
-[node name="DashCooldown" type="Timer" parent="."]
-wait_time = 2.0
+[node name="CoyoteTime" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
