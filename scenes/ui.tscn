@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlp4f6kloxu6h"]
+
+[ext_resource type="FontFile" uid="uid://ify4irhw83gv" path="res://assets/fonts/PixelOperator8.ttf" id="1_so7h6"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_so7h6")
+theme_override_font_sizes/font_size = 8
+text = "Score: X"
