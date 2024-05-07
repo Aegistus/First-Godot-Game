@@ -454,6 +454,7 @@ _data = {
 unique_name_in_owner = true
 
 [node name="Player" parent="." instance=ExtResource("2_jpd00")]
+position = Vector2(44, -192)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
@@ -485,7 +486,7 @@ position = Vector2(104, -34)
 [node name="Platforms" type="Node" parent="."]
 
 [node name="platform" parent="Platforms" instance=ExtResource("6_b6omf")]
-position = Vector2(35, -48)
+position = Vector2(42, -182)
 
 [node name="platform2" parent="Platforms" instance=ExtResource("6_b6omf")]
 position = Vector2(288, -6)

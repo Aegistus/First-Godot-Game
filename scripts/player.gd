@@ -55,7 +55,9 @@ func _physics_process(delta):
 		else:
 			animated_sprite.play("run")
 	else:
-		animated_sprite.play("jump")
+		if not dash_timer.is_stopped():
+			animated_sprite.play("dash")
+		#else:
 
 	# Check for dash input
 	if canDash and not is_on_floor() and Input.is_action_just_pressed("Dash"):
@@ -79,3 +81,4 @@ func _physics_process(delta):
 func jump():
 	velocity.y = JUMP_VELOCITY
 	jumpSound.play()
+	animated_sprite.play("jump")	
