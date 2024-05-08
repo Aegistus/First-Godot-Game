@@ -1,5 +1,11 @@
 extends CanvasLayer
 
+func _ready():
+	GameManager.on_game_end.connect(make_visible)
+	
+func make_visible():
+	visible = true
+
 func _on_restart_pressed():
 	GameManager.reset_scene()
 

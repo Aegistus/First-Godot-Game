@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://ce5apt86h43yi"]
 
-[ext_resource type="TileSet" uid="uid://c8c8xmtjn1ndc" path="res://scenes/game_tilemap.tres" id="1_saaxd"]
+[ext_resource type="TileSet" uid="uid://c8c8xmtjn1ndc" path="res://tilemaps/game_tilemap.tres" id="1_saaxd"]
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="2_6qmow"]
 [ext_resource type="FontFile" uid="uid://dnyljtrlhr7gf" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_vxtgp"]
 [ext_resource type="FontFile" uid="uid://ify4irhw83gv" path="res://assets/fonts/PixelOperator8.ttf" id="3_5o35e"]

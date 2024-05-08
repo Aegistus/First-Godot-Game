@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bm6jbhigqbseh"]
+[gd_scene load_steps=20 format=3 uid="uid://bm6jbhigqbseh"]
 
 [ext_resource type="PackedScene" uid="uid://dp6wc3yoc55k7" path="res://scenes/game_manager.tscn" id="1_2n2ho"]
 [ext_resource type="PackedScene" uid="uid://oiq05osdhq6y" path="res://scenes/player.tscn" id="1_250c6"]
-[ext_resource type="TileSet" uid="uid://c8c8xmtjn1ndc" path="res://scenes/game_tilemap.tres" id="3_iadc1"]
+[ext_resource type="TileSet" uid="uid://c8c8xmtjn1ndc" path="res://tilemaps/game_tilemap.tres" id="3_iadc1"]
 [ext_resource type="PackedScene" uid="uid://diiek34tnj2q0" path="res://scenes/platform.tscn" id="3_pqyvc"]
 [ext_resource type="PackedScene" uid="uid://eucu8kjk700c" path="res://scenes/coin.tscn" id="4_cft1i"]
 [ext_resource type="PackedScene" uid="uid://co65ag0066fu5" path="res://scenes/killzone.tscn" id="5_4y6w5"]
@@ -10,6 +10,8 @@
 [ext_resource type="FontFile" uid="uid://ify4irhw83gv" path="res://assets/fonts/PixelOperator8.ttf" id="7_3lrq3"]
 [ext_resource type="PackedScene" uid="uid://bnlfwbqiiei4r" path="res://scenes/ui.tscn" id="9_n44fi"]
 [ext_resource type="PackedScene" uid="uid://c1x3rrwjjnfba" path="res://scenes/end_scene.tscn" id="10_foh18"]
+[ext_resource type="Texture2D" uid="uid://cmsqnq2cm8mmf" path="res://assets/sprites/Flag.png" id="11_1e5mo"]
+[ext_resource type="Script" path="res://scripts/EndFlag.gd" id="11_6fnxc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jhj58"]
 
@@ -50,6 +52,24 @@ _data = {
 "RESET": SubResource("Animation_olsn6"),
 "move": SubResource("Animation_ptsc3")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xv4s"]
+atlas = ExtResource("11_1e5mo")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0mhrn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xv4s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nubng"]
+size = Vector2(16, 20)
 
 [node name="Game" type="Node2D"]
 
@@ -141,3 +161,24 @@ autowrap_mode = 2
 [node name="UI" parent="." instance=ExtResource("9_n44fi")]
 
 [node name="EndScene" parent="." instance=ExtResource("10_foh18")]
+visible = false
+
+[node name="EndFlag" type="Node2D" parent="."]
+position = Vector2(-56, 5)
+script = ExtResource("11_6fnxc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EndFlag"]
+position = Vector2(6, -10)
+scale = Vector2(0.0671875, 0.0671875)
+sprite_frames = SubResource("SpriteFrames_0mhrn")
+frame_progress = 0.792793
+
+[node name="Area2D" type="Area2D" parent="EndFlag"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndFlag/Area2D"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_nubng")
+
+[connection signal="on_game_end" from="GameManager" to="EndScene" method="_on_game_manager_on_game_end"]
+[connection signal="body_entered" from="EndFlag/Area2D" to="EndFlag" method="_on_area_2d_body_entered"]
