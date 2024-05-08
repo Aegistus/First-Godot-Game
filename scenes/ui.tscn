@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://bnlfwbqiiei4r"]
+[gd_scene load_steps=18 format=3 uid="uid://bnlfwbqiiei4r"]
 
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="1_kcers"]
 [ext_resource type="Texture2D" uid="uid://dye25h7ngdjrc" path="res://assets/sprites/coin.png" id="1_mlnuk"]
 [ext_resource type="FontFile" uid="uid://ify4irhw83gv" path="res://assets/fonts/PixelOperator8.ttf" id="1_yussc"]
+[ext_resource type="Script" path="res://scripts/RunTime.gd" id="4_pm2pr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c50dc"]
 atlas = ExtResource("1_mlnuk")
@@ -107,7 +108,13 @@ grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+[node name="Score" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/Score"]
 offset_left = 78.0
 offset_top = 20.0
 offset_right = 231.0
@@ -117,10 +124,34 @@ theme_override_font_sizes/font_size = 32
 text = "0"
 vertical_alignment = 1
 script = ExtResource("1_kcers")
+metadata/_edit_use_anchors_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Score"]
 position = Vector2(46, 46)
 scale = Vector2(5.75, 5.75)
 sprite_frames = SubResource("SpriteFrames_xemjw")
 autoplay = "default"
 frame_progress = 0.372376
+
+[node name="RunTime" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -246.0
+offset_top = 9.0
+offset_right = -10.0
+offset_bottom = 49.0
+grow_horizontal = 0
+script = ExtResource("4_pm2pr")
+
+[node name="Label" type="Label" parent="CanvasLayer/RunTime"]
+layout_direction = 3
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_yussc")
+theme_override_font_sizes/font_size = 32
+text = "00:00::00"
+horizontal_alignment = 2
+vertical_alignment = 1
