@@ -1,0 +1,116 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1x3rrwjjnfba"]
+
+[ext_resource type="Script" path="res://scripts/end_scene.gd" id="1_7lnsq"]
+[ext_resource type="Theme" uid="uid://bjh18os60hss2" path="res://new_theme.tres" id="1_s4rwu"]
+[ext_resource type="FontFile" uid="uid://dnyljtrlhr7gf" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_37di4"]
+[ext_resource type="Script" path="res://scripts/FinalTime.gd" id="3_kmkqs"]
+
+[node name="EndScene" type="CanvasLayer"]
+script = ExtResource("1_7lnsq")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FINISHED" type="Label" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 68.0
+offset_right = 120.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme = ExtResource("1_s4rwu")
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("2_37di4")
+theme_override_font_sizes/font_size = 32
+text = "FINISHED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FinalTime" type="Label" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -129.0
+offset_top = 117.0
+offset_right = 129.0
+offset_bottom = 140.0
+grow_horizontal = 2
+theme = ExtResource("1_s4rwu")
+theme_type_variation = &"HeaderLarge"
+text = "Final Time: 00:00::00"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_kmkqs")
+
+[node name="Restart" type="Button" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -174.0
+offset_right = 51.0
+offset_bottom = -150.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_s4rwu")
+theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Restart"
+
+[node name="MainMenu" type="Button" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -136.0
+offset_right = 128.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_s4rwu")
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -65.0
+offset_right = 51.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_s4rwu")
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[connection signal="pressed" from="Control/Panel/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Control/Panel/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Control/Panel/Quit" to="." method="_on_quit_pressed"]

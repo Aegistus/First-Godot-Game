@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bjh18os60hss2"]
+
+[ext_resource type="FontFile" uid="uid://ify4irhw83gv" path="res://assets/fonts/PixelOperator8.ttf" id="1_j354w"]
+
+[resource]
+resource_name = "Pixel_Text"
+default_font = ExtResource("1_j354w")
+default_font_size = 16
