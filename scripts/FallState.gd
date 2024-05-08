@@ -43,8 +43,8 @@ func get_next_state():
 		return StateType.IDLE
 	if Input.is_action_just_pressed("Jump") and not coyote_time.is_stopped():
 		return StateType.JUMPING
-	if Input.is_action_just_pressed("Dash"):
-		return StateType.DASHING
+	#if Input.is_action_just_pressed("Dash"):
+		#return StateType.DASHING
 	if Input.is_action_just_pressed("Jump"):
 		return StateType.DOUBLEJUMPING
 	return null

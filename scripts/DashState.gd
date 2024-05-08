@@ -11,6 +11,7 @@ var dashDirection
 @onready var animated_sprite = $"../../AnimatedSprite2D"
 @onready var dash_timer = $"../../DashTimer"
 @onready var dash_sound = $"../../DashSound"
+@onready var explosion = $"../../Explosion"
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -24,6 +25,7 @@ func enter():
 	elif dashDirection < 0:
 		animated_sprite.flip_h = true
 	dash_sound.play()
+	explosion.emitting = true
 	
 func exit():
 	pass

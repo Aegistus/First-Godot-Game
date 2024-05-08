@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://oiq05osdhq6y"]
+[gd_scene load_steps=43 format=3 uid="uid://oiq05osdhq6y"]
 
 [ext_resource type="Texture2D" uid="uid://bnob6wauwxya2" path="res://assets/sprites/knight.png" id="1_foh1v"]
 [ext_resource type="AudioStream" uid="uid://r6jn4s3pwjg6" path="res://assets/sounds/dash.wav" id="3_8ycpo"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/JumpState.gd" id="7_8n5h8"]
 [ext_resource type="Script" path="res://scripts/DashState.gd" id="8_4tq28"]
 [ext_resource type="Script" path="res://scripts/DoubleJumpState.gd" id="9_0gfg6"]
+[ext_resource type="PackedScene" uid="uid://d1u1o4njygkjt" path="res://scenes/explosion.tscn" id="11_ger1i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yvlew"]
 atlas = ExtResource("1_foh1v")
@@ -290,3 +291,5 @@ script = ExtResource("8_4tq28")
 
 [node name="DoubleJumpState" type="Node" parent="StateMachine"]
 script = ExtResource("9_0gfg6")
+
+[node name="Explosion" parent="." instance=ExtResource("11_ger1i")]
