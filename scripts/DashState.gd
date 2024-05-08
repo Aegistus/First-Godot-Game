@@ -40,14 +40,16 @@ func process_state_physics(delta):
 	# in-air movement
 	var direction = Input.get_axis("Move Left", "Move Right")
 
+	# Add dash speed
+	player.velocity.x = dashDirection * DASH_SPEED
+	
 	# Handle movement/deceleration
 	if direction:
-		player.velocity.x = direction * (AIR_MOVE_SPEED + GameManager.bonusSpeed)
+		player.velocity.x += direction * (AIR_MOVE_SPEED + GameManager.bonusSpeed)
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, AIR_MOVE_SPEED)
 	
-	# Add dash speed
-	player.velocity.x += dashDirection * DASH_SPEED
+
 	player.move_and_slide()
 
 	
