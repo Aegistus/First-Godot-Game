@@ -1,7 +1,9 @@
 extends Label
 
-
 func _ready():
+	GameManager.on_game_end.connect(set_clock)
+
+func set_clock():
 	var minutes : int = GameManager.runTime / 60
 	var seconds := fmod(GameManager.runTime, 60)
 	var milliseconds := fmod(GameManager.runTime, 1) * 100
