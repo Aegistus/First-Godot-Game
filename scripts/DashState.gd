@@ -42,7 +42,7 @@ func process_state_physics(delta):
 
 	# Handle movement/deceleration
 	if direction:
-		player.velocity.x = direction * AIR_MOVE_SPEED
+		player.velocity.x = direction * (AIR_MOVE_SPEED + GameManager.bonusSpeed)
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, AIR_MOVE_SPEED)
 	

@@ -3,6 +3,9 @@ extends Node
 var score = 0
 var runTime = 0
 var isRunning = true
+var bonusSpeed = 0
+var speed_per_coin = 10
+
 signal score_change(newScore)
 signal on_game_end()
 
@@ -12,6 +15,7 @@ func _process(delta):
 
 func add_point():
 	score += 1
+	bonusSpeed = score * speed_per_coin
 	score_change.emit(score)
 	print(score)
 

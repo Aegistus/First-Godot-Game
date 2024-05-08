@@ -1,6 +1,6 @@
 extends Node
 
-const SPEED = 130.0
+var SPEED = 130.0
 
 var defaultState = false
 var stateType = StateType.WALKING
@@ -29,7 +29,7 @@ func process_state_physics(delta):
 		animated_sprite.flip_h = true
 	# Handle movement/deceleration
 	if direction:
-		player.velocity.x = direction * SPEED
+		player.velocity.x = direction * (SPEED + GameManager.bonusSpeed)
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, SPEED)
 	player.move_and_slide()
