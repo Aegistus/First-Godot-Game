@@ -9,6 +9,7 @@ func _ready():
 		if state.defaultState:
 			currentState = state
 			currentState.enter()
+	GameManager.on_game_end.connect(disable_player)
 
 func _process(delta):
 	currentState.process_state(delta)
@@ -27,3 +28,9 @@ func get_state_of_type(stateType):
 	for state in states:
 		if state.stateType == stateType:
 			return state
+
+func disable_player():
+	currentState.exit()
+	var nextState = get_state_of_type(StateType.DISABLED)
+	currentState = nextState
+	currentState.enter()
