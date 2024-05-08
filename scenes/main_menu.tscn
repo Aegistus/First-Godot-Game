@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ce5apt86h43yi"]
+[gd_scene load_steps=6 format=3 uid="uid://ce5apt86h43yi"]
 
 [ext_resource type="TileSet" uid="uid://c8c8xmtjn1ndc" path="res://tilemaps/game_tilemap.tres" id="1_saaxd"]
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="2_6qmow"]
 [ext_resource type="FontFile" uid="uid://dnyljtrlhr7gf" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_vxtgp"]
 [ext_resource type="FontFile" uid="uid://ify4irhw83gv" path="res://assets/fonts/PixelOperator8.ttf" id="3_5o35e"]
+[ext_resource type="AudioStream" uid="uid://bx0hxxh5bgpec" path="res://assets/music/time_for_adventure.mp3" id="5_8algr"]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -82,6 +83,10 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_5o35e")
 theme_override_font_sizes/font_size = 32
 text = "Quit"
+
+[node name="Menu Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_8algr")
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/Menu/StartGame" to="CanvasLayer/Menu" method="_on_start_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu/Quit" to="CanvasLayer/Menu" method="_on_quit_pressed"]

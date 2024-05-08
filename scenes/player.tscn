@@ -1,8 +1,9 @@
-[gd_scene load_steps=49 format=3 uid="uid://oiq05osdhq6y"]
+[gd_scene load_steps=50 format=3 uid="uid://oiq05osdhq6y"]
 
 [ext_resource type="Texture2D" uid="uid://bnob6wauwxya2" path="res://assets/sprites/knight.png" id="1_foh1v"]
 [ext_resource type="AudioStream" uid="uid://r6jn4s3pwjg6" path="res://assets/sounds/dash.wav" id="3_8ycpo"]
 [ext_resource type="AudioStream" uid="uid://bed76qyw4saxv" path="res://assets/sounds/jump.wav" id="3_aaotk"]
+[ext_resource type="AudioStream" uid="uid://3nn4j8gad2ep" path="res://assets/sounds/fart.wav" id="4_kqlxi"]
 [ext_resource type="Script" path="res://scripts/StateMachine.gd" id="4_krt08"]
 [ext_resource type="Script" path="res://scripts/IdleState.gd" id="5_nskkc"]
 [ext_resource type="Script" path="res://scripts/WalkState.gd" id="5_upu21"]
@@ -299,6 +300,9 @@ bus = &"SFX"
 [node name="DashSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_8ycpo")
 
+[node name="DoubleJumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_kqlxi")
+
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
@@ -306,6 +310,8 @@ one_shot = true
 [node name="CoyoteTime" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="Explosion" parent="." instance=ExtResource("11_ger1i")]
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("4_krt08")
@@ -333,5 +339,3 @@ script = ExtResource("11_ioa3q")
 
 [node name="DeadState" type="Node" parent="StateMachine"]
 script = ExtResource("12_pepwb")
-
-[node name="Explosion" parent="." instance=ExtResource("11_ger1i")]

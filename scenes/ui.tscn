@@ -115,6 +115,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer/Score"]
+layout_mode = 0
 offset_left = 78.0
 offset_top = 20.0
 offset_right = 231.0

@@ -8,7 +8,8 @@ var stateType = StateType.DOUBLEJUMPING
 
 @onready var player = $"../.."
 @onready var animated_sprite = $"../../AnimatedSprite2D"
-@onready var jumpSound = $"../../JumpSound"
+@onready var double_jump_sound = $"../../DoubleJumpSound"
+@onready var explosion = $"../../Explosion"
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -16,7 +17,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func enter():
 	animated_sprite.play("jump")
 	player.velocity.y = JUMP_VELOCITY
-	jumpSound.play()
+	double_jump_sound.play()
+	explosion.emitting = true
 	
 func exit():
 	pass
