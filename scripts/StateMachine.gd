@@ -34,3 +34,9 @@ func disable_player():
 	var nextState = get_state_of_type(StateType.DISABLED)
 	currentState = nextState
 	currentState.enter()
+
+func kill_player():
+	currentState.exit()
+	var nextState = get_state_of_type(StateType.DEAD)
+	currentState = nextState
+	currentState.enter()

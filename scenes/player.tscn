@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://oiq05osdhq6y"]
+[gd_scene load_steps=49 format=3 uid="uid://oiq05osdhq6y"]
 
 [ext_resource type="Texture2D" uid="uid://bnob6wauwxya2" path="res://assets/sprites/knight.png" id="1_foh1v"]
 [ext_resource type="AudioStream" uid="uid://r6jn4s3pwjg6" path="res://assets/sounds/dash.wav" id="3_8ycpo"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/DoubleJumpState.gd" id="9_0gfg6"]
 [ext_resource type="PackedScene" uid="uid://d1u1o4njygkjt" path="res://scenes/explosion.tscn" id="11_ger1i"]
 [ext_resource type="Script" path="res://scripts/DisabledState.gd" id="11_ioa3q"]
+[ext_resource type="Script" path="res://scripts/DeadState.gd" id="12_pepwb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yvlew"]
 atlas = ExtResource("1_foh1v")
@@ -44,6 +45,22 @@ region = Rect2(192, 160, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4fw63"]
 atlas = ExtResource("1_foh1v")
 region = Rect2(224, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5pau"]
+atlas = ExtResource("1_foh1v")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6ve1"]
+atlas = ExtResource("1_foh1v")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohw4c"]
+atlas = ExtResource("1_foh1v")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc068"]
+atlas = ExtResource("1_foh1v")
+region = Rect2(96, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r1iq3"]
 atlas = ExtResource("1_foh1v")
@@ -162,6 +179,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_e5pau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6ve1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohw4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc068")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_r1iq3")
 }, {
 "duration": 1.0,
@@ -249,9 +283,10 @@ collision_layer = 2
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_ew3sg")
-animation = &"dash"
+animation = &"dead"
 autoplay = "idle"
-frame_progress = 0.0924579
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
@@ -295,5 +330,8 @@ script = ExtResource("9_0gfg6")
 
 [node name="DisabledState" type="Node" parent="StateMachine"]
 script = ExtResource("11_ioa3q")
+
+[node name="DeadState" type="Node" parent="StateMachine"]
+script = ExtResource("12_pepwb")
 
 [node name="Explosion" parent="." instance=ExtResource("11_ger1i")]
